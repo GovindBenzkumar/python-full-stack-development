@@ -10,6 +10,7 @@ def add_employee():
         c = input("Enter place: ")
         d = input("Enter designation: ")
         e = input("Enter mobile no: ")
+        print("---------------------")
         con.execute("insert into employee1 values(?,?,?,?,?)", (a, b, c, d, e))
         con.commit()
 
@@ -22,6 +23,7 @@ def display_employee():
         print("Place:-",place)
         print("Designation:-",designation)
         print("Contact no:-",mob_no)
+        print("---------------------")
 
 def search_employee():
     e= int(input("Enter the employee ID:- "))
