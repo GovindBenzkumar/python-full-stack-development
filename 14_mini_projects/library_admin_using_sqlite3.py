@@ -1,6 +1,7 @@
 import sqlite3
 con= sqlite3.connect("library_db")
 #con.execute("create table library1(b_id int,name text,price int,qty int)")
+#con.execute("create table library3(b_id int primary key, name text, price int, qty int)")
 
 def add_book():
     l= int(input("Enter the number of books you want to enter:-\n"))
@@ -10,12 +11,12 @@ def add_book():
         price= int(input("Enter the price of the book you want to add:-\n"))
         qty= int(input("Enter the quantity of the book you want to add:-\n"))
         print("---------------------")
-        con.execute("insert into library1 values(?,?,?,?)",(b_id,name,price,qty))
+        con.execute("insert into library3 values(?,?,?,?)",(b_id,name,price,qty))
         con.commit()
 
 def display_book():
     print("Books available:-\n")
-    d=con.execute("select * from library1")
+    d=con.execute("select * from library3")
     for b_id,name,price,qty in d:
         print("Book ID:- ",b_id)
         print("Name:- ",name)
@@ -25,7 +26,7 @@ def display_book():
 
 def search_book():
     s= int(input("Enter the book ID to be searched:-\n"))
-    d=con.execute("select * from library1 where b_id= ?",(s,))
+    d=con.execute("select * from library3 where b_id= ?",(s,))
     for b_id,name,price,qty in d:
         print("Book ID:- ",b_id)
         print("Name:- ",name)
@@ -33,15 +34,36 @@ def search_book():
         print("Quantity:- ",qty)
 
 def update_book():
-    s= int(input("Enter the book ID to be updated:-\n"))
-    p= int(input("Enter the updated price:-\n"))
-    q= int(input("Enter the updated quantity:-\n"))
-    con.execute("update library1 set price= ?,qty= ? where b_id= ?",(p,q,s))
+    id = int(input("Enter Book ID: "))
+
+    print("1. Update Book Name")
+    print("2. Update Price")
+    print("3. Update Quantity")
+
+    ch = int(input("Enter choice: "))
+
+    if ch == 1:
+        name = input("Enter New Name: ")
+        con.execute("UPDATE library3 SET name=? WHERE b_id=?", (name, id))
+
+    elif ch == 2:
+        price = input("Enter New Price: ")
+        con.execute("UPDATE library3 SET price=? WHERE b_id=?", (price, id))
+
+    elif ch == 3:
+        price = int(input("Enter New Quantity: "))
+        con.execute("UPDATE library3 SET qty=? WHERE b_id=?", (price, id))
+
+    else:
+        print("Invalid choice")
+        return
+
     con.commit()
+    print("Book updated")
 
 def delete_book():
     s= int(input("Enter the book ID to be deleted:-\n"))
-    con.execute("delete from library1 where b_id= ?",(s,))
+    con.execute("delete from library3 where b_id= ?",(s,))
     con.commit()
 
 while True:
