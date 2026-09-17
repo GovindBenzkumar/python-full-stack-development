@@ -12,4 +12,4 @@ for roll,name,age in d:
     print("Roll:",roll)
     print("Name:",name)
     print("Age:",age)
-    print("-----------")
+    print("------------")
