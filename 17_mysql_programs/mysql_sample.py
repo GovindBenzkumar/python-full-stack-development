@@ -10,6 +10,7 @@ cur = con.cursor()
 #cur.execute("alter table student add column subject text")
 #cur.execute("update student set subject='Math' where roll=101")
 cur.execute("update student set subject='English' where roll=103")
+#inner join
 cur.execute("select student.name,teacher.name from student inner join teacher on student.subject=teacher.subject")
 d=cur.fetchall()
 for i in d:
