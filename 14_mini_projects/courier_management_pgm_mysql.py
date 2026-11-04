@@ -4,9 +4,11 @@ con.autocommit=True
 cur=con.cursor()
 
 #cur.execute("create database base")
-cur.execute("create table if not exists category(c_id int auto_increment primary key,c_name varchar(100),description text)")
-cur.execute("create table if not exists branch(b_id int auto_increment primary key,b_name varchar(100),address text,district varchar(100),phone varchar(100),email varchar(100),password varchar(100))")
-cur.execute("create table if not exists parcel(p_id int auto_increment primary key,c_id int,source_b_id int,destination_b_id int,sender_name varchar(100),sender_phone varchar(100),sender_address text,receiver_name varchar(100),receiver_phone varchar(100),receiver_address text,weight decimal(8,2),booking_date datetime,delivery_date datetime,delivery_charge decimal(10,2),payment_status varchar(20),parcel_status varchar(30))")
+cur.execute("create table if not exists admin(user_name varchar(30), password varchar(30)")
+cur.execute("insert into admin values('admin123','134340')")
+#cur.execute("create table if not exists category(c_id int auto_increment primary key,c_name varchar(100),description text)")
+#cur.execute("create table if not exists branch(b_id int auto_increment primary key,b_name varchar(100),address text,district varchar(100),phone varchar(100),email varchar(100),password varchar(100))")
+#cur.execute("create table if not exists parcel(p_id int auto_increment primary key,c_id int,source_b_id int,destination_b_id int,sender_name varchar(100),sender_phone varchar(100),sender_address text,receiver_name varchar(100),receiver_phone varchar(100),receiver_address text,weight decimal(8,2),booking_date datetime,delivery_date datetime,delivery_charge decimal(10,2),payment_status varchar(20),parcel_status varchar(30))")
 
 def admin_login():
     u = input("Enter the username")

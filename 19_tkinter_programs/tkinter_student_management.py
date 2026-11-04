@@ -6,6 +6,7 @@ con.execute("create table if not exists student1 (name text,age int,rollno int)"
 
 sample=Tk()
 sample.geometry("300x300")
+sample.configure(bg="red")
 n1=Label(sample,text="Name")
 n1.place(x=20,y=30)
 n=Entry(sample)

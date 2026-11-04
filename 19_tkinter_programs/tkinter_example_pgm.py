@@ -1,10 +1,11 @@
 from tkinter import *
 
+
 sample = Tk()
 sample.geometry("400x500")
 sample.title("welcome")
 sample.resizable(True,False)
-sample.configure(bg="red")
+sample.configure(bg="pink")
 
 #widgets
 
@@ -30,7 +31,7 @@ def display():
     # l2 = Label(sample,text=x,bg="green")
     # l2.pack()
 
-b = Button(sample,text="click",font=("Times New Roman",10),bg="blue",activebackground="red",command=display)
+b = Button(sample,text="click",font=("Times New Roman",10),bg="white",activebackground="red",command=display)
 b.place(x=110,y=90)
 sample.mainloop()
 
